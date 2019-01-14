@@ -5,11 +5,14 @@ sap.ui.define([
 
 	return BaseController.extend("sap.com.xsOdata_tutorial.controller.Master", {
 
-	
+		onSelect : function (oEvent){
+			// .getBindingContext("statusJobs").getObject();
+			console.error("oEvent",oEvent.getSource().getBindingContext().getObject().CUSTOMER);
+		},
+		onSelectT : function(oEvent){
+			
+		}
 		
-
-		
-
 	});
 
 });

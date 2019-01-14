@@ -23,6 +23,8 @@ sap.ui.define([
 
 			console.error("oModel", oModel);
 			console.error("oModel", oModel2);
+			
+			
 		},
 
 		getRouter: function () {

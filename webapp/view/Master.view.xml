@@ -3,7 +3,45 @@
 	<App>
 		<pages>
 			<Page title="MASTER VIEW">
-				<content></content>
+				<content>
+					<!--<List type="Active" items="{path: '/CUSTOMERS'}" id="table_master">-->
+						
+					<!--</List>-->
+					
+					<Table id="table_master" items="{path : '/CUSTOMERS'}" growing="true" itemPress="onSelectT">
+						<columns>
+							<Column>
+								<Text text="ID"/>
+							</Column>
+							<Column>
+								<Text text="LifeSpend"/>
+							</Column>
+							<Column>
+								<Text text="NewSpend"/>
+							</Column>
+							<Column>
+								<Text text="Income"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem press="onSelect" type="Active">
+								<cells>
+									<Text text="{ID}"/>
+									<Text text="{LIFESPEND}"/>
+									<Text text="{NEWSPEND}"/>
+									<Text text="{INCOME}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+				<footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button type="Accept" text="Accept"/>
+						<Button type="Reject" text="Reject"/>
+					</OverflowToolbar>
+				</footer>
 			</Page>
 		</pages>
 	</App>
