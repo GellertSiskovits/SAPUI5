@@ -1,0 +1,11 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+		<Schema xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+			Namespace="test1.datafile">
+			<EntityType Name="DATA_SERVICEType">
+				<Key><PropertyRef Name="ID"/></Key><Property Name="ID" Type="Edm.Int32" Nullable="false"/><Property Name="COST" Type="Edm.Double"/><Property Name="DESCRIPTION" Type="Edm.String" MaxLength="200"/></EntityType>
+			<EntityContainer Name="datafile" m:IsDefaultEntityContainer="true"><EntitySet Name="DATA_SERVICE" EntityType="test1.datafile.DATA_SERVICEType"/></EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
