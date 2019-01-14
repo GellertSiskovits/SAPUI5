@@ -39,14 +39,11 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": [
-			"sap_hcb",
-			"sap_belize"
-		]
+		"supportedThemes": ["sap_hcb", "sap_belize"]
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "sap.com.xsOdata_tutorial.view.App",
+			"viewName": "sap.com.xsOdata_tutorial.view.Master",
 			"type": "XML"
 		},
 		"dependencies": {
@@ -80,11 +77,9 @@
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		},
 		"routing": {
 			"config": {
@@ -96,21 +91,15 @@
 				"controlId": "idAppControl",
 				"clearControlAggregation": false
 			},
-			"routes": [
-				{
-					"name": "RouteApp",
-					"pattern": "RouteApp",
-					"target": [
-						"TargetApp"
-					]
-				}
-			],
+			"routes": [{
+				"name": "RouteApp",
+				"pattern": "RouteApp",
+				"target": ["TargetApp"]
+			}],
 			"targets": {
 				"TargetApp": {
 					"viewType": "XML",
-					"transition": "slide",
-					"clearControlAggregation": false,
-					"viewName": "App"
+					"viewName": "Master"
 				}
 			}
 		}
