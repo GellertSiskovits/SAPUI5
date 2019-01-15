@@ -1,5 +1,28 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
-	<TableSelectDialog>
-		
-	</TableSelectDialog>
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data" height="100%" width="100%">
+	<Dialog title="Chart">
+		<layout:VerticalLayout width="600px">
+			<viz:Popover id="idPopOver"></viz:Popover>
+			<viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height='600px' width="100%" vizType='line'>
+				<viz:dataset>
+					<viz.data:FlattenedDataset data="{path : '/CUSTOMERFULL'}">
+						<viz.data:dimensions>
+							<viz.data:DimensionDefinition name="Week" value="{CUSTOMER}"/>
+						</viz.data:dimensions>
+						<viz.data:measures>
+							<viz.data:MeasureDefinition name="Revenue" value="{INCOME}"/>
+							<viz.data:MeasureDefinition name="Cost" value="{LIFESPEND}"/>
+						</viz.data:measures>
+					</viz.data:FlattenedDataset>
+				</viz:dataset>
+				<viz:feeds>
+					<viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure" values="Revenue"/>
+					<viz.feeds:FeedItem id='categoryAxisFeed' uid="categoryAxis" type="Dimension" values="Week"/>
+				</viz:feeds>
+			</viz:VizFrame>
+		</layout:VerticalLayout>
+		<beginButton>
+			<Button text="Close" press="onCloseDialog"/>
+		</beginButton>
+	</Dialog>
 </core:FragmentDefinition>

@@ -26,7 +26,7 @@
 						<items>
 							<ColumnListItem press="onSelect" type="Active">
 								<cells>
-									<Text text="{ID}"/>
+									<Text text="{CUSTOMER}"/>
 									<Text text="{LIFESPEND}"/>
 									<Text text="{NEWSPEND}"/>
 									<Text text="{INCOME}"/>
@@ -38,7 +38,7 @@
 				<footer>
 					<OverflowToolbar>
 						<ToolbarSpacer/>
-						<Button type="Accept" text="Accept"/>
+						<Button type="Accept" text="Chart" press="handleChart"/>
 						<Button type="Reject" text="Reject"/>
 					</OverflowToolbar>
 				</footer>

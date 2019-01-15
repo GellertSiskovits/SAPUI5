@@ -11,6 +11,23 @@ sap.ui.define([
 		},
 		onSelectT : function(oEvent){
 			
+		},
+		
+		handleChart : function(oEvent){
+			if(!this.oDialog){
+				this.oDialog = sap.ui.xmlfragment("sap.com.xsOdata_tutorial.view.TableDetail", this);
+				this.oDialog.setModel(this.getView().getModel());
+				
+			}
+			this.onOpenDialog();
+		},
+		
+		onCloseDialog : function(){
+			this.oDialog.close();
+		},
+		
+		onOpenDialog : function(){
+			this.oDialog.open();
 		}
 		
 	});
