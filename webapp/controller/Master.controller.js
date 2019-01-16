@@ -6,13 +6,17 @@ sap.ui.define([
 	return BaseController.extend("sap.com.xsOdata_tutorial.controller.Master", {
 
 		onSelect: function (oEvent) {
-			// .getBindingContext("statusJobs").getObject();
-			console.error("oEvent", oEvent.getSource().getBindingContext().getObject().CUSTOMER);
+			this.onOpenDetailDialog(new sap.ui.model.json.JSONModel(oEvent.getSource().getBindingContext().getObject()));
 		},
-		onSelectT: function (oEvent) {
-
+		
+		onOpenDetailDialog : function(oModel){
+			if (!this.oDialogDetail) {
+				this.oDialogDetail = sap.ui.xmlfragment("sap.com.xsOdata_tutorial.view.Detail", this);
+				this.oDialogDetail.setModel(oModel);
+			}
+			this.oDialogDetail.open();
 		},
-
+		
 		addValues: function () {
 			if (!this.oDialogNew) {
 				this.oDialogNew = sap.ui.xmlfragment("sap.com.xsOdata_tutorial.view.NewEntry", this);
@@ -120,19 +124,19 @@ sap.ui.define([
 					oModel.NEWSPEND = sap.ui.getCore().byId("simpleForm").getContent()[5].getValue();
 					oModel.INCOME = sap.ui.getCore().byId("simpleForm").getContent()[7].getValue();
 					oModel.LOYALTY = sap.ui.getCore().byId("simpleForm").getContent()[9].getValue();
-					console.error("oModel", oModel)
 					that.getView().getModel().create("/CUSTOMERS", oModel, {
 						success: function (data) {
-							console.error("ye", data);
+							sap.m.MessageBox.success("Successfully Added");
 							that.onCloseDialogNew();
 						},
 						error: function (oError) {
+							sap.m.MessageBox.alert(oError);
 							console.error("ne", oError)
 						}
 					});
 				}
 			});
-			
+
 		}
 
 	});
