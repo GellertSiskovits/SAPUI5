@@ -4,7 +4,7 @@
 	
 	<Dialog title="{/CUSTOMER_NAME}">
 		<VBox class="sapUiSmallMargin" width="auto">
-		<f:SimpleForm id="SimpleFormDisplay354wide" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+		<f:SimpleForm id="SimpleFormDisplay354" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
 			labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
 			singleContainerFullSize="false">
 			<f:content>
@@ -13,87 +13,87 @@
 						<l:GridData span="XL1 L2 M2 S4"/>
 					</layoutData>
 				</Label>
-				<Text id="nameText" text="{/CUSTOMER_AGE_ID}">
+				<Input type="Number">
 					<layoutData>
 						<l:GridData span="XL1 L10 M10 S8"/>
 					</layoutData>
-				</Text>
+				</Input>
 				<Label text="City">
 					<layoutData>
 						<l:GridData span="XL1 L6 M2 S4"/>
 					</layoutData>
 				</Label>
-				<Text text="{/CUSTOMER_CITY}">
+				<Input type="Number">
 					<layoutData>
 						<l:GridData span="XL1 L6 M2 S8"/>
 					</layoutData>
-				</Text>
+				</Input>
 				<Label text="Email Address">
 					<layoutData>
 						<l:GridData span="XL1 L6 M2 S4"/>
 					</layoutData>
 				</Label>
-				<Text text="{/CUSTOMER_EMAIL}">
+				<Input type="Number">
 					<layoutData>
 						<l:GridData span="XL1 L6 M6 S8"/>
 					</layoutData>
-				</Text>
+				</Input>
 				<Label text="Eduction">
 					<layoutData>
 						<l:GridData span="XL1 L6 M6 S4"/>
 					</layoutData>
 				</Label>
-				<Text id="countryText" text="{/CUSTOMER_EDUCATION}">
+				<Input type="Number">
 					<layoutData>
 						<l:GridData span="XL1 L6 M6 S8"/>
 					</layoutData>
-				</Text>
+				</Input>
 				<Label text="Job">
 					<layoutData>
 						<l:GridData span="XL1 L6 M6 S4"/>
 					</layoutData>
 				</Label>
-				<Text id="jobText" text="{/CUSTOMER_JOB}">
+				<Input type="Number">
 					<layoutData>
 						<l:GridData span="XL1 L6 M6 S8"/>
 					</layoutData>
-				</Text>
+				</Input>
 				<Label text="Gender">
 					<layoutData>
 						<l:GridData span="XL1 L6 M6 S4"/>
 					</layoutData>
 				</Label>
-				<Text id="genderText" text="{path:'/CUSTOMER_GENDER_ID', formatter: '.formatter.gender'}">
+				<Input type="Number">
 					<layoutData>
 						<l:GridData span="XL1 L6 M6 S8"/>
 					</layoutData>
-				</Text>
+				</Input>
 				<Label text="Marital Status">
 					<layoutData>
 						<l:GridData span="XL1 L6 M6 S4"/>
 					</layoutData>
 				</Label>
-				<Text id="maritalStatusText" text="{path:'/CUSTOMER_MARITAL_STATUS_ID', formatter: '.formatter.maritalStatus'}">
+				<Input type="Number">
 					<layoutData>
 						<l:GridData span="XL1 L6 M6 S8"/>
 					</layoutData>
-				</Text>
+				</Input>
 				<Label text="Timestamp">
 					<layoutData>
 						<l:GridData span="XL1 L6 M6 S4"/>
 					</layoutData>
 				</Label>
-				<Text id="timeStampText" text="{/CUSTOMER_TIMESTAMP}">
+				<Input type="Number">
 					<layoutData>
 						<l:GridData span="XL1 L6 M6 S8"/>
 					</layoutData>
-				</Text>
+				</Input>
 				
 			</f:content>
 		</f:SimpleForm>
 		</VBox>
 		<beginButton>
-			<Button text="Close" press="onCloseDialogDetail"/>
+			<Button text="Close" press="onCloseDialogDetailEntry"/>
 		</beginButton>
 	</Dialog>
 </core:FragmentDefinition>

@@ -1,35 +1,63 @@
 sap.ui.define([
-	"sap/com/xsOdata_tutorial/controller/BaseController"
-], function (BaseController) {
+	"sap/com/xsOdata_tutorial/controller/BaseController",
+	"sap/com/xsOdata_tutorial/model/formatter"
+], function (BaseController, formatter) {
 	"use strict";
 
 	return BaseController.extend("sap.com.xsOdata_tutorial.controller.Master", {
-
+		formatter: formatter,
 		onSelect: function (oEvent) {
-			var id = oEvent.getSource().getBindingContext().getObject().ID;
+			var id = oEvent.getSource().getBindingContext().getObject();
 			var that = this;
-			this.getView().getModel().read("/CUSTOMERFULL", {
+			this.getView().getModel().read("/CUSTOMER", {
 				success: function (oData) {
 					var data = ("oData", oData.results.filter(function (index, number) {
-						return index.ID === id;
+						return index.CUSTOMER_ID === id.ID;
 					}));
-					that.onOpenDetailDialog(new sap.ui.model.json.JSONModel(data[0]));
+					console.error("data",data)
+					if (data.length === 0) {
+						that.onOpenDetailEntryDialog(id.CUSTOMER);
+					} else {
+						that.onOpenDetailDialog(new sap.ui.model.json.JSONModel(data[0]));
+					}
 				}
 			});
 
 			//this.onOpenDetailDialog(new sap.ui.model.json.JSONModel(oEvent.getSource().getBindingContext().getObject()));
 		},
 
+		onOpenDetailEntryDialog: function (customerName) {
+			console.error("data",customerName)
+			if (!this.oDialogDetailEntry) {
+				this.oDialogDetailEntry = sap.ui.xmlfragment("sap.com.xsOdata_tutorial.view.DetailEntry", this);
+			}
+			var oModel = new sap.ui.model.json.JSONModel({CUSTOMER_NAME : customerName});
+			this.oDialogDetailEntry.setModel(oModel);
+			this.oDialogDetailEntry.open();
+		},
+
 		onOpenDetailDialog: function (oModel) {
-			console.error("oModel", oModel)
+
 			if (!this.oDialogDetail) {
 				this.oDialogDetail = sap.ui.xmlfragment("sap.com.xsOdata_tutorial.view.Detail", this);
-				this.oDialogDetail.setModel(oModel);
 			}
+			console.error("oModel", oModel)
+			this.oDialogDetail.setModel(oModel);
 			this.oDialogDetail.open();
-			console.error(this.oDialogDetail.getModel().getData());
-			console.error(sap.ui.getCore().byId("SimpleFormDisplay354wide").getModel().getData());
-			console.error(sap.ui.getCore().byId("SimpleFormDisplay354wide").getModel().getData().ID);
+		},
+
+		onCloseDialogDetailEntry: function () {
+			var that = this;
+			if (this.oDialogDetailEntry) {
+				that.oDialogDetailEntry.close();
+			}
+		},
+
+		onCloseDialogDetail: function () {
+			var that = this;
+			if (this.oDialogDetail) {
+				that.oDialogDetail.close();
+			}
 		},
 
 		addValues: function () {
@@ -141,7 +169,8 @@ sap.ui.define([
 					oModel.LOYALTY = sap.ui.getCore().byId("simpleForm").getContent()[9].getValue();
 					that.getView().getModel().create("/CUSTOMERS", oModel, {
 						success: function (data) {
-							sap.m.MessageBox.success("Successfully Added");
+							//sap.m.MessageBox.success("Successfully Added");
+							console.error("ye", data)
 							that.onCloseDialogNew();
 						},
 						error: function (oError) {
