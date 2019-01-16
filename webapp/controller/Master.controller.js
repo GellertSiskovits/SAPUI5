@@ -6,17 +6,32 @@ sap.ui.define([
 	return BaseController.extend("sap.com.xsOdata_tutorial.controller.Master", {
 
 		onSelect: function (oEvent) {
-			this.onOpenDetailDialog(new sap.ui.model.json.JSONModel(oEvent.getSource().getBindingContext().getObject()));
+			var id = oEvent.getSource().getBindingContext().getObject().ID;
+			var that = this;
+			this.getView().getModel().read("/CUSTOMERFULL", {
+				success: function (oData) {
+					var data = ("oData", oData.results.filter(function (index, number) {
+						return index.ID === id;
+					}));
+					that.onOpenDetailDialog(new sap.ui.model.json.JSONModel(data[0]));
+				}
+			});
+
+			//this.onOpenDetailDialog(new sap.ui.model.json.JSONModel(oEvent.getSource().getBindingContext().getObject()));
 		},
-		
-		onOpenDetailDialog : function(oModel){
+
+		onOpenDetailDialog: function (oModel) {
+			console.error("oModel", oModel)
 			if (!this.oDialogDetail) {
 				this.oDialogDetail = sap.ui.xmlfragment("sap.com.xsOdata_tutorial.view.Detail", this);
 				this.oDialogDetail.setModel(oModel);
 			}
 			this.oDialogDetail.open();
+			console.error(this.oDialogDetail.getModel().getData());
+			console.error(sap.ui.getCore().byId("SimpleFormDisplay354wide").getModel().getData());
+			console.error(sap.ui.getCore().byId("SimpleFormDisplay354wide").getModel().getData().ID);
 		},
-		
+
 		addValues: function () {
 			if (!this.oDialogNew) {
 				this.oDialogNew = sap.ui.xmlfragment("sap.com.xsOdata_tutorial.view.NewEntry", this);
