@@ -1,22 +1,38 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout"
 	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data" height="100%" width="100%">
-	<Dialog title="Chart">
-		<layout:VerticalLayout width="600px">
+	<Dialog title="Chart" xmlns:fb="sap.ui.comp.filterbar">
+		<layout:VerticalLayout width="800px">
+			<layout:HorizontalLayout class="sapUiContentPadding" >
+				<MultiComboBox selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish" width="auto"
+					>
+					<core:Item key="a" text="Accountant"/>
+					<core:Item key="b" text="Auditor"/>
+					<core:Item key="c" text="Hardware Developer"/>
+				</MultiComboBox>
+			
+				<ComboBox selectionChange="handleChartChange"  width="auto">
+					<core:Item key="bar_jobs" text="Comparative"/>
+					<core:Item key="line_general" text="General Chart"/>
+				</ComboBox>
+			</layout:HorizontalLayout>
 			<viz:Popover id="idPopOver"></viz:Popover>
-			<viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height='600px' width="100%" vizType='line'>
+			<viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}" height='800px' width="100%" vizType='line'>
 				<viz:dataset>
-					<viz.data:FlattenedDataset data="{path : '/CUSTOMERFULL'}">
+					<viz.data:FlattenedDataset data="{path : '/CUSTOMERFULL' , sorter:{path:'INCOME'}}">
 						<viz.data:dimensions>
 							<viz.data:DimensionDefinition name="Week" value="{CUSTOMER}"/>
 						</viz.data:dimensions>
 						<viz.data:measures>
-							<viz.data:MeasureDefinition name="Revenue" value="{INCOME}"/>
-							<viz.data:MeasureDefinition name="Cost" value="{LIFESPEND}"/>
+							<viz.data:MeasureDefinition name="New Spend" value="{NEWSPEND}"/>
+							<viz.data:MeasureDefinition name="Life Spend" value="{LIFESPEND}"/>
+							<viz.data:MeasureDefinition name="Income" value="{INCOME}"/>
 						</viz.data:measures>
 					</viz.data:FlattenedDataset>
 				</viz:dataset>
 				<viz:feeds>
-					<viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure" values="Revenue"/>
+					<viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure" values="New Spend"/>
+					<viz.feeds:FeedItem id='valueAxisFeed2' uid="valueAxis" type="Measure" values="Life Spend"/>
+					<viz.feeds:FeedItem id='valueAxisFeed3' uid="valueAxis" type="Measure" values="Income"/>
 					<viz.feeds:FeedItem id='categoryAxisFeed' uid="categoryAxis" type="Dimension" values="Week"/>
 				</viz:feeds>
 			</viz:VizFrame>

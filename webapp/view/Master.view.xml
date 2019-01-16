@@ -24,7 +24,7 @@
 							</Column>
 						</columns>
 						<items>
-							<ColumnListItem press="onSelect" type="Active">
+							<ColumnListItem id="chartComboBox" press="onSelect" type="Active">
 								<cells>
 									<Text text="{CUSTOMER}"/>
 									<Text text="{LIFESPEND}"/>
@@ -38,8 +38,8 @@
 				<footer>
 					<OverflowToolbar>
 						<ToolbarSpacer/>
+						<Button  text="Create Entry" press="addValues"/>
 						<Button type="Accept" text="Chart" press="handleChart"/>
-						<Button type="Reject" text="Reject"/>
 					</OverflowToolbar>
 				</footer>
 			</Page>

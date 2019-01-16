@@ -1,0 +1,46 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:viz="sap.viz.ui5.controls" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data" height="100%"
+	width="100%">
+	<Dialog title="New Entry">
+		<VBox height="auto" width="auto" class="sapUiLargeMargin">
+			<f:SimpleForm id="simpleForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+				labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+				singleContainerFullSize="false">
+				<f:content>
+					<Label text="Full name of the contact"/>
+					<Input id="name" value="{SupplierName}"/>
+					<Label text="Life Spend"/>
+					<Input type="Number" value="{Street}">
+						<layoutData>
+							<l:GridData span="XL1 L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="New Spend"/>
+					<Input type="Number" value="{HouseNumber}">
+						<layoutData>
+							<l:GridData span="XL1 L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="Income"/>
+					<Input type="Number" value="{ZIPCode}">
+						<layoutData>
+							<l:GridData span="XL1 L2 M2 S4"/>
+						</layoutData>
+					</Input>
+					<Label text="Loyalty"/>
+					<Input type="Number" value="{ZIPCode}">
+						<layoutData>
+							<l:GridData span="XL1 L2 M2 S4"/>
+						</layoutData>
+					</Input>
+				</f:content>
+			</f:SimpleForm>
+		</VBox>
+		<beginButton>
+			<Button text="Close" press="onCloseDialogNew"/>
+		</beginButton>
+		<endButton>
+			<Button type="Accept" text="Create" press="createEntry"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
