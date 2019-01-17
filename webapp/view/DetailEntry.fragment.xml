@@ -1,99 +1,98 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:viz="sap.viz.ui5.controls" xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data" height="100%"
 	width="auto">
-	
 	<Dialog title="{/CUSTOMER_NAME}">
 		<VBox class="sapUiSmallMargin" width="auto">
-		<f:SimpleForm id="SimpleFormDisplay354" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
-			labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
-			singleContainerFullSize="false">
-			<f:content>
-				<Label text="Age">
-					<layoutData>
-						<l:GridData span="XL1 L2 M2 S4"/>
-					</layoutData>
-				</Label>
-				<Input type="Number">
-					<layoutData>
-						<l:GridData span="XL1 L10 M10 S8"/>
-					</layoutData>
-				</Input>
-				<Label text="City">
-					<layoutData>
-						<l:GridData span="XL1 L6 M2 S4"/>
-					</layoutData>
-				</Label>
-				<Input type="Number">
-					<layoutData>
-						<l:GridData span="XL1 L6 M2 S8"/>
-					</layoutData>
-				</Input>
-				<Label text="Email Address">
-					<layoutData>
-						<l:GridData span="XL1 L6 M2 S4"/>
-					</layoutData>
-				</Label>
-				<Input type="Number">
-					<layoutData>
-						<l:GridData span="XL1 L6 M6 S8"/>
-					</layoutData>
-				</Input>
-				<Label text="Eduction">
-					<layoutData>
-						<l:GridData span="XL1 L6 M6 S4"/>
-					</layoutData>
-				</Label>
-				<Input type="Number">
-					<layoutData>
-						<l:GridData span="XL1 L6 M6 S8"/>
-					</layoutData>
-				</Input>
-				<Label text="Job">
-					<layoutData>
-						<l:GridData span="XL1 L6 M6 S4"/>
-					</layoutData>
-				</Label>
-				<Input type="Number">
-					<layoutData>
-						<l:GridData span="XL1 L6 M6 S8"/>
-					</layoutData>
-				</Input>
-				<Label text="Gender">
-					<layoutData>
-						<l:GridData span="XL1 L6 M6 S4"/>
-					</layoutData>
-				</Label>
-				<Input type="Number">
-					<layoutData>
-						<l:GridData span="XL1 L6 M6 S8"/>
-					</layoutData>
-				</Input>
-				<Label text="Marital Status">
-					<layoutData>
-						<l:GridData span="XL1 L6 M6 S4"/>
-					</layoutData>
-				</Label>
-				<Input type="Number">
-					<layoutData>
-						<l:GridData span="XL1 L6 M6 S8"/>
-					</layoutData>
-				</Input>
-				<Label text="Timestamp">
-					<layoutData>
-						<l:GridData span="XL1 L6 M6 S4"/>
-					</layoutData>
-				</Label>
-				<Input type="Number">
-					<layoutData>
-						<l:GridData span="XL1 L6 M6 S8"/>
-					</layoutData>
-				</Input>
-				
-			</f:content>
-		</f:SimpleForm>
+			<f:SimpleForm id="SimpleFormDisplay354" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+				labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+				singleContainerFullSize="false">
+				<f:content>
+					<Label text="Age">
+						<layoutData>
+							<l:GridData span="XL1 L2 M2 S4"/>
+						</layoutData>
+					</Label>
+					<Input  id="inputAge" type="Number">
+						<layoutData>
+							<l:GridData span="XL1 L10 M10 S8"/>
+						</layoutData>
+					</Input>
+					<Label text="City">
+						<layoutData>
+							<l:GridData span="XL1 L6 M2 S4"/>
+						</layoutData>
+					</Label>
+					<Input id="inputCity">
+						<layoutData>
+							<l:GridData span="XL1 L6 M2 S8"/>
+						</layoutData>
+					</Input>
+					<Label text="Email Address">
+						<layoutData>
+							<l:GridData span="XL1 L6 M2 S4"/>
+						</layoutData>
+					</Label>
+					<Input id="inputEmail">
+						<layoutData>
+							<l:GridData span="XL1 L6 M6 S8"/>
+						</layoutData>
+					</Input>
+					<Label text="Eduction">
+						<layoutData>
+							<l:GridData span="XL1 L6 M6 S4"/>
+						</layoutData>
+					</Label>
+					<Input id="inputEducation">
+						<layoutData>
+							<l:GridData span="XL1 L6 M6 S8"/>
+						</layoutData>
+					</Input>
+					<Label text="Job">
+						<layoutData>
+							<l:GridData span="XL1 L6 M6 S4"/>
+						</layoutData>
+					</Label>
+					<Input id="inputJob">
+						<layoutData>
+							<l:GridData span="XL1 L6 M6 S8"/>
+						</layoutData>
+					</Input>
+					<Label text="Gender">
+						<layoutData>
+							<l:GridData span="XL1 L6 M6 S4"/>
+						</layoutData>
+					</Label>
+					<RadioButtonGroup id="inputGender" columns="2" selectedIndex="0" class="sapUiSmallMargin">
+						<buttons>
+							<RadioButton id="RB1-1" text="Male"/>
+							<RadioButton id="RB1-2" text="Female"/>
+						</buttons>
+						<layoutData>
+							<l:GridData span="XL1 L6 M6 S8"/>
+						</layoutData>
+					</RadioButtonGroup>
+					<Label text="Marital Status">
+						<layoutData>
+							<l:GridData span="XL1 L6 M6 S4"/>
+						</layoutData>
+					</Label>
+					<RadioButtonGroup id="inputMaritalStatus" columns="2" selectedIndex="0" class="sapUiSmallMargin">
+						<buttons>
+							<RadioButton id="RB2-1" text="Single"/>
+							<RadioButton id="RB2-2" text="Married"/>
+						</buttons>
+						<layoutData>
+							<l:GridData span="XL1 L6 M6 S8"/>
+						</layoutData>
+					</RadioButtonGroup>
+				</f:content>
+			</f:SimpleForm>
 		</VBox>
 		<beginButton>
 			<Button text="Close" press="onCloseDialogDetailEntry"/>
 		</beginButton>
+		<endButton>
+			<Button text="Submit" press="submitDetails"/>
+		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

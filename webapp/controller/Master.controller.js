@@ -16,7 +16,7 @@ sap.ui.define([
 					}));
 					console.error("data",data)
 					if (data.length === 0) {
-						that.onOpenDetailEntryDialog(id.CUSTOMER);
+						that.onOpenDetailEntryDialog(id.CUSTOMER,id.ID);
 					} else {
 						that.onOpenDetailDialog(new sap.ui.model.json.JSONModel(data[0]));
 					}
@@ -25,13 +25,36 @@ sap.ui.define([
 
 			//this.onOpenDetailDialog(new sap.ui.model.json.JSONModel(oEvent.getSource().getBindingContext().getObject()));
 		},
-
-		onOpenDetailEntryDialog: function (customerName) {
+		
+		submitDetails : function(oEvent){
+			console.error("INDEX",this.oDialogDetailEntry.getModel());
+			var that = this; 
+			var oData = {};
+			oData.CUSTOMER_ID = this.oDialogDetailEntry.getModel().getData().ID;
+			oData.CUSTOMER_NAME = this.oDialogDetailEntry.getModel().getData().CUSTOMER_NAME;
+			oData.CUSTOMER_AGE_ID = sap.ui.getCore().byId("inputAge").getValue();
+			oData.CUSTOMER_CITY = sap.ui.getCore().byId("inputCity").getValue();
+			oData.CUSTOMER_EMAIL = sap.ui.getCore().byId("inputEmail").getValue();
+			oData.CUSTOMER_EDUCATION = sap.ui.getCore().byId("inputEducation").getValue();
+			oData.CUSTOMER_JOB = sap.ui.getCore().byId("inputJob").getValue();
+			oData.CUSTOMER_GENDER_ID = sap.ui.getCore().byId("inputGender").getSelectedIndex();
+			oData.CUSTOMER_MARITAL_STATUS_ID = sap.ui.getCore().byId("inputMaritalStatus").getSelectedIndex();
+			console.error("oData",oData)
+			
+			this.getView().getModel().create("/CUSTOMER",oData,{
+				success: function(oData){
+					console.error("yepp",oData);
+					that.onCloseDialogDetailEntry();
+				}	
+			});
+		},
+		
+		onOpenDetailEntryDialog: function (customerName,customerId) {
 			console.error("data",customerName)
 			if (!this.oDialogDetailEntry) {
 				this.oDialogDetailEntry = sap.ui.xmlfragment("sap.com.xsOdata_tutorial.view.DetailEntry", this);
 			}
-			var oModel = new sap.ui.model.json.JSONModel({CUSTOMER_NAME : customerName});
+			var oModel = new sap.ui.model.json.JSONModel({CUSTOMER_NAME : customerName,ID:customerId});
 			this.oDialogDetailEntry.setModel(oModel);
 			this.oDialogDetailEntry.open();
 		},
